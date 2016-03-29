@@ -24,6 +24,22 @@ public class Time {
         hours = h;
         minutes = m;
         seconds = s;
+        while(seconds>59){
+            seconds -= 60;
+            minutes++;
+        }
+        while(seconds<0){
+            seconds += 60;
+            minutes--;
+        }
+        while(minutes>59){
+            minutes -= 60;
+            hours++;
+        }
+        while(minutes<0){
+            minutes += 60;
+            hours--;
+        }
     }
     public void updateToCurrentTime(){
         Calendar cal = Calendar.getInstance();
@@ -31,14 +47,29 @@ public class Time {
         minutes = cal.get(Calendar.MINUTE);
         seconds = cal.get(Calendar.SECOND);
     }
-    int getHours(){
+    public Time subtract(Time t){
+        return new Time(hours - t.getHours(), minutes - t.getMinutes(), seconds - t.getSeconds());
+    }
+    public Time sum(Time t){
+        return new Time(hours + t.getHours(), minutes + t.getMinutes(), seconds + t.getSeconds());
+    }
+    public int getHours(){
         return hours;
     }
-    int getMinutes(){
+    public int getMinutes(){
         return minutes;
     }
-    int getSeconds(){
+    public int getSeconds(){
         return seconds;
+    }
+    public void setHours(int h){
+        hours = h;
+    }
+    public void setMinutes(int m){
+        minutes = m;
+    }
+    public void setSeconds(int s){
+        seconds = s;
     }
     
 }
