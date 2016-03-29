@@ -16,10 +16,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Time t = new Time();
-        System.out.println(t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds());
-        t = new Time(1, 2, 3);
-        System.out.println(t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds());
         t.updateToCurrentTime();
+        t = t.subtract(new Time(9,9,9));
         System.out.println(t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds());
     }
 }
